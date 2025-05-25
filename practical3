@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Script to list directories in the current directory
+
+echo "Directories in the current directory:"
+for entry in *; do
+    if [ -d "$entry" ]; then
+        echo "$entry"
+    fi
+done
