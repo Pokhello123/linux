@@ -1,0 +1,21 @@
+#!/bin/bash
+
+name=$1
+
+if [ -z $name ]; then
+        echo "you have nat entered any argument"
+exit 1
+fi
+
+if [ -d $name ]; then
+        echo "you have entered directory name"
+        ls -l $name
+elif [ -f $name ]; then
+        echo "you have entered file name"
+        more $name
+else
+        echo "your file or directory name is invalid"
+fi
+
+
+
