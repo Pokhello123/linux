@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <file_name> <line_to_append>"
+    exit 1
+fi
+
+file_name="$1"
+line_to_append="$2"
+
+echo "$line_to_append" >> "$file_name"
+
+line_count=$(wc -l < "$file_name")
+
+echo "The file '$file_name' now has $line_count lines."
+
