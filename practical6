@@ -1,0 +1,8 @@
+#!/bin/bash
+
+while true; do
+    read -p "Enter a word: " word
+    [[ "$word" == "exit" ]] && { echo "Goodbye!"; break; }
+    length="${#word}"
+    echo "The length of '$word' is $length characters."
+done
