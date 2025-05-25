@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Prompt user for input
+read -p "Enter a number: " num
+
+# Reverse the number using shell utilities
+rev_num=$(echo "$num" | rev)
+
+# Output the reversed number
+echo "Reversed number: $rev_num"
