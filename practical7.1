@@ -1,0 +1,32 @@
+#!/bin/bash
+# Function to display usage information
+usage() {
+    echo "Usage: $0 <username>"
+    echo "Example: $0 john_doe"
+    exit 1
+}
+
+# Check if a username argument is provided
+if [ -z "$1" ]; then
+    echo "Error: No username provided."
+    usage
+fi
+
+USERNAME="$1"
+
+# Check if the user exists on the system
+if ! id -u "$USERNAME" &>/dev/null; then
+    echo "Error: User '$USERNAME' does not exist on this system."
+    exit 1
+fi
+
+# Get the User ID (UID)
+USER_UID=$(id -u "$USERNAME")
+echo "User: $USERNAME"
+echo "UID: $USER_UID"
+
+LOGIN_COUNT=$(last "$USERNAME" | grep -v "wtmp begins" | grep -v "reboot" | grep -c "$USERNAME")
+
+echo "Login Count: $LOGIN_COUNT"
+
+exit 0
