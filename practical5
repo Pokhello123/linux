@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Usage: ./copy_overwrite.sh source_file destination_file
+
+if [ $# -ne 2 ]; then
+  echo "Usage: $0 source_file destination_file"
+  exit 1
+fi
+
+src=$1
+dest=$2
+
+if [ ! -f "$src" ]; then
+  echo "Source file '$src' does not exist."
+  exit 1
+fi
+
+cp "$src" "$dest"
+if [ $? -eq 0 ]; then
+  echo "Copied '$src' to '$dest' successfully."
+else
+  echo "Failed to copy '$src' to '$dest'."
+  exit 1
+fi
+
